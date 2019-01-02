@@ -77,15 +77,18 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -107,6 +110,8 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    debug:
+      m_Flags: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1001 &1327550873
 Prefab:
@@ -183,6 +188,126 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212540645456655830, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212540645456655830, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212540645456655830, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
+    - target: {fileID: 212042553182695800, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212042553182695800, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212042553182695800, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
+    - target: {fileID: 212427354182472954, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212427354182472954, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212427354182472954, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
+    - target: {fileID: 212609120820056388, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212609120820056388, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212609120820056388, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
+    - target: {fileID: 212962199166113216, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212962199166113216, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212962199166113216, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
+    - target: {fileID: 212619269006288490, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212619269006288490, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212619269006288490, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
+    - target: {fileID: 212349316071198012, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212349316071198012, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212349316071198012, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
+    - target: {fileID: 212766530941676766, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.08677551
+      objectReference: {fileID: 0}
+    - target: {fileID: 212766530941676766, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.78676474
+      objectReference: {fileID: 0}
+    - target: {fileID: 212766530941676766, guid: 10c65f0c164d2e04e9c3daf97304609a,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.17849833
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 10c65f0c164d2e04e9c3daf97304609a, type: 2}
@@ -258,11 +383,11 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
 --- !u!4 &1332222424
 Transform:
   m_ObjectHideFlags: 0
