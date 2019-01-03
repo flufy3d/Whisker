@@ -21,17 +21,17 @@ public class JerrysController : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (mRigidBody != null) {
-			if (Input.GetButton ("Horizontal")) {
-				mRigidBody.AddTorque(Vector3.back * Input.GetAxis("Horizontal")*100);
+			if (Input.GetKey(KeyCode.LeftArrow)) {
+				mRigidBody.AddTorque(Vector3.back * -1.0f * 100);
 			}
-			if (Input.GetButton ("Vertical")) {
-				mRigidBody.AddTorque(Vector3.right * Input.GetAxis("Vertical")*100);
+			if (Input.GetKey(KeyCode.RightArrow)) {
+				mRigidBody.AddTorque(Vector3.back * 1.0f * 100);
 			}
-			if (Input.GetButtonDown("Jump")) {
-				if(mAudioSource != null && JumpSound != null){
-					mAudioSource.PlayOneShot(JumpSound);
-				}
-				mRigidBody.AddForce(Vector3.up*200);
+			if (Input.GetKey(KeyCode.UpArrow)) {
+				mRigidBody.AddTorque(Vector3.right * 1.0f * 100);
+			}
+			if (Input.GetKey(KeyCode.DownArrow)) {
+				mRigidBody.AddTorque(Vector3.right * -1.0f * 100);
 			}
 		}
 	}

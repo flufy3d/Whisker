@@ -12,11 +12,11 @@ public class ActorSpawner : MonoBehaviour {
 
 	public float spawn_x_min = 0;
 
-	public float spawn_x_max = 40;
+	public float spawn_x_max = 30;
 
 	public float spawn_z_min = 0;
 
-	public float spawn_z_max = 40;
+	public float spawn_z_max = 30;
 
 	Vector3 PickRandomPosition()
 	{
