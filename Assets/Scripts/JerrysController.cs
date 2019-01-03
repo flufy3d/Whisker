@@ -4,7 +4,7 @@ using System.Collections;
 //<summary>
 //Ball movement controlls and simple third-person-style camera
 //</summary>
-public class RollerBall : MonoBehaviour {
+public class JerrysController : MonoBehaviour {
 
 	public AudioClip JumpSound = null;
 	public AudioClip HitSound = null;
