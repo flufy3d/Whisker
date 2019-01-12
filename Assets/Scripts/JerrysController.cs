@@ -14,7 +14,7 @@ public class JerrysController : MonoBehaviour {
 	private AudioSource mAudioSource = null;
 	private bool mFloorTouched = false;
 
-	public float jerrySpeedScale=200f;
+	public float jerrySpeedScale=400f;
 
 
 	void Start () {
@@ -25,10 +25,16 @@ public class JerrysController : MonoBehaviour {
 	void FixedUpdate () {
 		if (mRigidBody != null) {
 			if (Input.GetButton ("VerticalJerry")) {
-				mRigidBody.AddTorque(Vector3.right * Input.GetAxis("VerticalJerry")*jerrySpeedScale);
+				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalJerry")*jerrySpeedScale);
 			}
 			if (Input.GetButton ("HorizontalJerry")) {
-				mRigidBody.AddTorque(Vector3.back * Input.GetAxis("HorizontalJerry")*jerrySpeedScale);
+				mRigidBody.AddForce(Vector3.right * Input.GetAxis("HorizontalJerry")*jerrySpeedScale);
+			}
+			if(Input.GetAxis("VerticalJerry")==0){
+				mRigidBody.velocity=new Vector3(mRigidBody.velocity.x,mRigidBody.velocity.y,0);
+			}
+			if(Input.GetAxis("HorizontalJerry")==0 ){
+				mRigidBody.velocity=new Vector3(0,mRigidBody.velocity.y,mRigidBody.velocity.z);
 			}
 			
 		}

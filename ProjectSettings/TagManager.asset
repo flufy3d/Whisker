@@ -6,6 +6,10 @@ TagManager:
   tags:
   - SpawnPoint
   - Rooms
+  - Coin
+  - Floor
+  - Tom
+  - Jerry
   layers:
   - Default
   - TransparentFX
