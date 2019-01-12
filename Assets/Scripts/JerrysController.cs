@@ -24,18 +24,13 @@ public class JerrysController : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (mRigidBody != null) {
-			if (Input.GetKey(KeyCode.LeftArrow)) {
-				mRigidBody.AddTorque(Vector3.back * -1.0f * jerrySpeedScale);
+			if (Input.GetButton ("VerticalJerry")) {
+				mRigidBody.AddTorque(Vector3.right * Input.GetAxis("VerticalJerry")*jerrySpeedScale);
 			}
-			if (Input.GetKey(KeyCode.RightArrow)) {
-				mRigidBody.AddTorque(Vector3.back * 1.0f * jerrySpeedScale);
+			if (Input.GetButton ("HorizontalJerry")) {
+				mRigidBody.AddTorque(Vector3.back * Input.GetAxis("HorizontalJerry")*jerrySpeedScale);
 			}
-			if (Input.GetKey(KeyCode.UpArrow)) {
-				mRigidBody.AddTorque(Vector3.right * 1.0f * jerrySpeedScale);
-			}
-			if (Input.GetKey(KeyCode.DownArrow)) {
-				mRigidBody.AddTorque(Vector3.right * -1.0f * jerrySpeedScale);
-			}
+			
 		}
 	}
 

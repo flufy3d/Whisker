@@ -11,6 +11,7 @@ public class TomController : MonoBehaviour {
 	private AudioSource mAudioSource = null;
 	private bool mFloorTouched = false;
 
+	public float tomSpeedScale=200f;
 	void Start () {
 		mRigidBody = GetComponent<Rigidbody> ();
 		mAudioSource = GetComponent<AudioSource> ();
@@ -18,23 +19,11 @@ public class TomController : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (mRigidBody != null) {
-			if (Input.GetKey(KeyCode.A)) {
-				mRigidBody.AddTorque(Vector3.back * -1.0f * 100);
+			if (Input.GetButton ("VerticalTom")) {
+				mRigidBody.AddTorque(Vector3.right * Input.GetAxis("VerticalTom")*tomSpeedScale);
 			}
-			if (Input.GetKey(KeyCode.D)) {
-				mRigidBody.AddTorque(Vector3.back * 1.0f * 100);
-			}
-			if (Input.GetKey(KeyCode.W)) {
-				mRigidBody.AddTorque(Vector3.right * 1.0f * 100);
-			}
-			if (Input.GetKey(KeyCode.S)) {
-				mRigidBody.AddTorque(Vector3.right * -1.0f * 100);
-			}
-			if (Input.GetButtonDown("Jump")) {
-				if(mAudioSource != null && JumpSound != null){
-					mAudioSource.PlayOneShot(JumpSound);
-				}
-				mRigidBody.AddForce(Vector3.up*200);
+			if (Input.GetButton ("HorizontalTom")) {
+				mRigidBody.AddTorque(Vector3.back * Input.GetAxis("HorizontalTom")*tomSpeedScale);
 			}
 		}
 	}
