@@ -1,8 +1,0 @@
-1.use 3d maze gen
-2.fix cam top view
-3.create tom and jerrys controller
-4.tom and jerrys shouldn't collider each other
-5.jerry eat cheese will be faster that means be safer
-6.exit hole will open after 5 seconds
-7.game stage logic
-

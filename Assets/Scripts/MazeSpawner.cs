@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 //<summary>
 //Game object, that creates maze and instantiates it in scene
@@ -24,13 +25,40 @@ public class MazeSpawner : MonoBehaviour {
 	public float CellWidth = 5;
 	public float CellHeight = 5;
 	public bool AddGaps = true;
-	public GameObject GoalPrefab = null;
+    [SerializeField]
+    private int _GoalSlotCount = 0;
+    public int GoalSlotCount { get { return _GoalSlotCount; } }
 
-	private BasicMazeGenerator mMazeGenerator = null;
+    public List<GameObject> ActorList = null;
+    private List<GameObject> ActorRandomList = new List<GameObject>();
+    private int SpawerCursor = -1;
 
-	void Start () {
-		if (!FullRandom) {
-			Random.seed = RandomSeed;
+
+    private BasicMazeGenerator mMazeGenerator = null;
+
+    GameObject pickOneActor()
+    {
+        SpawerCursor += 1;
+        if(SpawerCursor < ActorRandomList.Count)
+            return ActorRandomList[SpawerCursor];
+
+        return null;
+    }
+
+    void Start () {
+        _GoalSlotCount = 0;
+        int actorCount = ActorList.Count;
+        List<GameObject> _tActorList = new List<GameObject>(ActorList);
+
+        for (int i = 0;i < actorCount; i++)
+        {
+            GameObject ranObj = _tActorList[Random.Range(0, _tActorList.Count)];
+            ActorRandomList.Add(ranObj);
+            _tActorList.Remove(ranObj);
+        }
+
+        if (!FullRandom) {
+			Random.InitState(RandomSeed);
 		}
 		switch (Algorithm) {
 		case MazeGenerationAlgorithm.PureRecursive:
@@ -74,10 +102,17 @@ public class MazeSpawner : MonoBehaviour {
 					tmp = Instantiate(Wall,new Vector3(x,0,z-CellHeight/2)+Wall.transform.position,Quaternion.Euler(0,180,0)) as GameObject;// back
 					tmp.transform.parent = transform;
 				}
-				if(cell.IsGoal && GoalPrefab != null){
-					tmp = Instantiate(GoalPrefab,new Vector3(x,1,z), Quaternion.Euler(0,0,0)) as GameObject;
-					tmp.transform.parent = transform;
-				}
+				if(cell.IsGoal){
+                    _GoalSlotCount += 1;
+                    GameObject obj = pickOneActor();
+                    if(obj)
+                    {
+                        tmp = Instantiate(obj, new Vector3(x, 1, z), Quaternion.Euler(0, 0, 0)) as GameObject;
+                        tmp.transform.parent = transform;
+                    }
+
+
+                }
 			}
 		}
 		if(Pillar != null){
