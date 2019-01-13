@@ -3,6 +3,10 @@ using System.Collections;
 
 public class TomController : MonoBehaviour {
 
+	private float verticalVelocity;
+	private float horizontalVelocity;
+
+	public float tomMaxSpeed=12f;
 	public AudioClip JumpSound = null;
 	public AudioClip HitSound = null;
 	public AudioClip CoinSound = null;
@@ -18,11 +22,13 @@ public class TomController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		verticalVelocity=Mathf.Abs(mRigidBody.velocity.z);
+		horizontalVelocity=Mathf.Abs(mRigidBody.velocity.x);
 		if (mRigidBody != null) {
-			if (Input.GetButton ("VerticalTom")) {
+			if (Input.GetButton ("VerticalTom") && verticalVelocity<tomMaxSpeed) {
 				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalTom")*tomSpeedScale);
 			}
-			if (Input.GetButton ("HorizontalTom")) {
+			if (Input.GetButton ("HorizontalTom") && horizontalVelocity<tomMaxSpeed) {
 				mRigidBody.AddForce(Vector3.right * Input.GetAxis("HorizontalTom")*tomSpeedScale);
 			}
 			if(Input.GetAxis("VerticalTom")==0){
