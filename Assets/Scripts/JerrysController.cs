@@ -6,6 +6,9 @@ using System.Collections;
 //</summary>
 public class JerrysController : MonoBehaviour {
 
+private float verticalVelocity;
+private float horizontalVelocity;
+public float jerryMaxSpeed=12f;
 	public AudioClip JumpSound = null;
 	public AudioClip HitSound = null;
 	public AudioClip CoinSound = null;
@@ -23,11 +26,13 @@ public class JerrysController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
+		verticalVelocity=Mathf.Abs(mRigidBody.velocity.z);
+		horizontalVelocity=Mathf.Abs(mRigidBody.velocity.x);
 		if (mRigidBody != null) {
-			if (Input.GetButton ("VerticalJerry")) {
+			if (Input.GetButton ("VerticalJerry") && verticalVelocity<jerryMaxSpeed) {
 				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalJerry")*jerrySpeedScale);
 			}
-			if (Input.GetButton ("HorizontalJerry")) {
+			if (Input.GetButton ("HorizontalJerry") && horizontalVelocity<jerryMaxSpeed) {
 				mRigidBody.AddForce(Vector3.right * Input.GetAxis("HorizontalJerry")*jerrySpeedScale);
 			}
 			if(Input.GetAxis("VerticalJerry")==0){
