@@ -30,32 +30,14 @@ public class MazeSpawner : MonoBehaviour {
     public int GoalSlotCount { get { return _GoalSlotCount; } }
 
     public List<GameObject> ActorList = null;
-    private List<GameObject> ActorRandomList = new List<GameObject>();
-    private int SpawerCursor = -1;
-
 
     private BasicMazeGenerator mMazeGenerator = null;
 
-    GameObject pickOneActor()
-    {
-        SpawerCursor += 1;
-        if(SpawerCursor < ActorRandomList.Count)
-            return ActorRandomList[SpawerCursor];
 
-        return null;
-    }
 
     void Start () {
         _GoalSlotCount = 0;
-        int actorCount = ActorList.Count;
-        List<GameObject> _tActorList = new List<GameObject>(ActorList);
-
-        for (int i = 0;i < actorCount; i++)
-        {
-            GameObject ranObj = _tActorList[Random.Range(0, _tActorList.Count)];
-            ActorRandomList.Add(ranObj);
-            _tActorList.Remove(ranObj);
-        }
+        List<Vector3> _GoalPosList = new List<Vector3>();
 
         if (!FullRandom) {
 			Random.InitState(RandomSeed);
@@ -104,18 +86,14 @@ public class MazeSpawner : MonoBehaviour {
 				}
 				if(cell.IsGoal){
                     _GoalSlotCount += 1;
-                    GameObject obj = pickOneActor();
-                    if(obj)
-                    {
-                        tmp = Instantiate(obj, new Vector3(x, 1, z), Quaternion.Euler(0, 0, 0)) as GameObject;
-                        tmp.transform.parent = transform;
-                    }
-
-
+                    _GoalPosList.Add(new Vector3(x, 1, z));
                 }
 			}
 		}
-		if(Pillar != null){
+
+
+
+        if (Pillar != null){
 			for (int row = 0; row < Rows+1; row++) {
 				for (int column = 0; column < Columns+1; column++) {
 					float x = column*(CellWidth+(AddGaps?.2f:0));
@@ -125,5 +103,18 @@ public class MazeSpawner : MonoBehaviour {
 				}
 			}
 		}
-	}
+
+        var actor_index_list = Utilities.GetRandomIntList(0, ActorList.Count);
+        var goal_slot_index_list = Utilities.GetRandomIntList(0, _GoalPosList.Count);
+
+
+        for(int i = 0;i < actor_index_list.Count;i++)
+        {
+            int actor_index = actor_index_list[i];
+            int goal_slot_index = goal_slot_index_list[i];
+            GameObject tmp;
+            tmp = Instantiate(ActorList[actor_index], _GoalPosList[goal_slot_index], Quaternion.Euler(0, 0, 0)) as GameObject;
+            tmp.transform.parent = transform;
+        }
+    }
 }
