@@ -72,16 +72,16 @@ lookRot=new Vector3( Input.GetAxis("HorizontalJerry"), 0,Input.GetAxis("Vertical
 }
 
 	void OnCollisionEnter(Collision coll){
-		if (coll.gameObject.tag.Equals ("Floor")) {
-			mFloorTouched = true;
-			if (mAudioSource != null && HitSound != null && coll.relativeVelocity.y > .5f) {
-				mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
-			}
-		} else {
-			if (mAudioSource != null && HitSound != null && coll.relativeVelocity.magnitude > 2f) {
-				mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
-			}
-		}
+		// if (coll.gameObject.tag.Equals ("Floor")) {
+		// 	mFloorTouched = true;
+		// 	if (mAudioSource != null && HitSound != null && coll.relativeVelocity.y > .5f) {
+		// 		mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
+		// 	}
+		// } else {
+		// 	if (mAudioSource != null && HitSound != null && coll.relativeVelocity.magnitude > 2f) {
+		// 		mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
+		// 	}
+		// }
 	}
 
 	void OnCollisionExit(Collision coll){

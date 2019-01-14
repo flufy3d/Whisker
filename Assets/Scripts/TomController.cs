@@ -41,15 +41,21 @@ public class TomController : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision coll){
-		if (coll.gameObject.tag.Equals ("Floor")) {
-			mFloorTouched = true;
-			if (mAudioSource != null && HitSound != null && coll.relativeVelocity.y > .5f) {
-				mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
+		// if (coll.gameObject.tag.Equals ("Floor")) {
+		// 	mFloorTouched = true;
+		// 	if (mAudioSource != null && HitSound != null && coll.relativeVelocity.y > .5f) {
+		// 		//mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
+		// 	}
+		// } else {
+		// 	if (mAudioSource != null && HitSound != null && coll.relativeVelocity.magnitude > 2f) {
+		// 		//mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
+		// 	}
+		// } 
+		if (coll.collider.CompareTag ("Jerry")) {
+			if(mAudioSource != null && CoinSound != null){
+				mAudioSource.PlayOneShot(CoinSound);
 			}
-		} else {
-			if (mAudioSource != null && HitSound != null && coll.relativeVelocity.magnitude > 2f) {
-				mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
-			}
+			Destroy(coll.gameObject);
 		}
 	}
 
@@ -59,8 +65,8 @@ public class TomController : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag.Equals ("Coin")) {
+	void OnCollision(Collision other) {
+		if (other.collider.CompareTag ("Jerry")) {
 			if(mAudioSource != null && CoinSound != null){
 				mAudioSource.PlayOneShot(CoinSound);
 			}
