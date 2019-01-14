@@ -248,7 +248,7 @@ MonoBehaviour:
   Wall: {fileID: 144206, guid: 9de82ec743bb24449a99f5cf1e325d61, type: 2}
   Pillar: {fileID: 142476, guid: f3f97a2401feba4479a301d6181e9da6, type: 2}
   Rows: 15
-  Columns: 20
+  Columns: 15
   CellWidth: 4
   CellHeight: 4
   AddGaps: 0

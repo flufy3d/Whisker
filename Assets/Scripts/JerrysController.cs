@@ -9,20 +9,27 @@ public class JerrysController : MonoBehaviour {
 private float verticalVelocity;
 private float horizontalVelocity;
 public float jerryMaxSpeed=12f;
+private Animator mAnimator;
 	public AudioClip JumpSound = null;
 	public AudioClip HitSound = null;
 	public AudioClip CoinSound = null;
-
 	private Rigidbody mRigidBody = null;
 	private AudioSource mAudioSource = null;
 	private bool mFloorTouched = false;
-
 	public float jerrySpeedScale=400f;
+	private Vector3 previousPos;
+	private float distance;
+	private Vector3 lookRot;
+	private Quaternion LookTo;
 
 
 	void Start () {
 		mRigidBody = GetComponent<Rigidbody> ();
 		mAudioSource = GetComponent<AudioSource> ();
+		mAnimator= transform.GetChild(0).GetComponent<Animator>();
+		mAnimator.SetBool("isWalk", false);
+		previousPos=transform.position;
+		distance=Vector3.Distance(transform.position, previousPos);
 	}
 
 	void FixedUpdate () {
@@ -31,19 +38,38 @@ public float jerryMaxSpeed=12f;
 		if (mRigidBody != null) {
 			if (Input.GetButton ("VerticalJerry") && verticalVelocity<jerryMaxSpeed) {
 				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalJerry")*jerrySpeedScale);
+			
 			}
 			if (Input.GetButton ("HorizontalJerry") && horizontalVelocity<jerryMaxSpeed) {
 				mRigidBody.AddForce(Vector3.right * Input.GetAxis("HorizontalJerry")*jerrySpeedScale);
+			
 			}
 			if(Input.GetAxis("VerticalJerry")==0){
-				mRigidBody.velocity=new Vector3(mRigidBody.velocity.x,mRigidBody.velocity.y,0);
+				mRigidBody.velocity=new Vector3(mRigidBody.velocity.x,mRigidBody.velocity.y,0);			
 			}
 			if(Input.GetAxis("HorizontalJerry")==0 ){
 				mRigidBody.velocity=new Vector3(0,mRigidBody.velocity.y,mRigidBody.velocity.z);
 			}
+			if(mRigidBody.velocity.magnitude<1f){
+				mAnimator.SetBool("isWalk", false);
+			}else{
+				mAnimator.SetBool("isWalk", true);
+			}
 			
+			RotateCharacter();
+
 		}
 	}
+
+void RotateCharacter(){
+	if(Input.GetAxis("HorizontalJerry")!=0 || Input.GetAxis("VerticalJerry")!=0){
+lookRot=new Vector3( Input.GetAxis("HorizontalJerry"), 0,Input.GetAxis("VerticalJerry"));
+	LookTo=Quaternion.LookRotation(lookRot);
+	transform.rotation = Quaternion.Slerp(transform.rotation, LookTo, 10 * Time.deltaTime);
+	}
+	
+
+}
 
 	void OnCollisionEnter(Collision coll){
 		if (coll.gameObject.tag.Equals ("Floor")) {
