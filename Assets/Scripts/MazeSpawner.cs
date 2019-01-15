@@ -33,6 +33,8 @@ public class MazeSpawner : MonoBehaviour {
 
     private BasicMazeGenerator mMazeGenerator = null;
 
+    public GameStateManager mGameStateManager = null;
+
 
 
     void Start () {
@@ -116,5 +118,7 @@ public class MazeSpawner : MonoBehaviour {
             tmp = Instantiate(ActorList[actor_index], _GoalPosList[goal_slot_index], Quaternion.Euler(0, 0, 0)) as GameObject;
             tmp.transform.parent = transform;
         }
+
+        mGameStateManager.StartGame();
     }
 }
