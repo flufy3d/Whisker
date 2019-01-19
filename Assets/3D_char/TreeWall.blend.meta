@@ -46,6 +46,9 @@ ModelImporter:
     2100016: Material_006
     2100018: Material_007
     2100020: Material_008
+    2100022: green01
+    2100024: brown01
+    2100026: prurple
     2300000: Cube
     2300002: Cylinder
     2300004: Cylinder_001
@@ -95,9 +98,59 @@ ModelImporter:
     4300028: Icosphere_007
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_002
+    second: {fileID: 2100000, guid: 6a4dbfeab92534c14bffa242658e44c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_003
+    second: {fileID: 2100000, guid: 6a4dbfeab92534c14bffa242658e44c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_004
+    second: {fileID: 2100000, guid: 71e1ae39c1fcc4c96b9b1062f424722d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_005
+    second: {fileID: 2100000, guid: 71e1ae39c1fcc4c96b9b1062f424722d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_006
+    second: {fileID: 2100000, guid: 71e1ae39c1fcc4c96b9b1062f424722d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_007
+    second: {fileID: 2100000, guid: 71e1ae39c1fcc4c96b9b1062f424722d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_008
+    second: {fileID: 2100000, guid: 71e1ae39c1fcc4c96b9b1062f424722d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brown01
+    second: {fileID: 2100000, guid: 71e1ae39c1fcc4c96b9b1062f424722d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green01
+    second: {fileID: 2100000, guid: 13eb834fc036c4490a9ab191aeb63524, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: prurple
+    second: {fileID: 2100000, guid: 6a4dbfeab92534c14bffa242658e44c5, type: 2}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

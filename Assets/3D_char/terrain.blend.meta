@@ -1,59 +1,27 @@
 fileFormatVersion: 2
-guid: c96194cc677b3422d98bcc39e318bf10
+guid: 62e35e9f8c44b4b9c99e91a1888f8b04
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Cylinder
-    100002: Icosphere
-    100004: Icosphere_001
-    100006: Icosphere_002
-    100008: Icosphere_003
-    100010: Icosphere_004
-    100012: //RootNode
-    400000: Cylinder
-    400002: Icosphere
-    400004: Icosphere_001
-    400006: Icosphere_002
-    400008: Icosphere_003
-    400010: Icosphere_004
-    400012: //RootNode
-    2100000: Green
-    2100002: Material_001
-    2300000: Cylinder
-    2300002: Icosphere
-    2300004: Icosphere_001
-    2300006: Icosphere_002
-    2300008: Icosphere_003
-    2300010: Icosphere_004
-    2300012: //RootNode
-    3300000: Cylinder
-    3300002: Icosphere
-    3300004: Icosphere_001
-    3300006: Icosphere_002
-    3300008: Icosphere_003
-    3300010: Icosphere_004
-    3300012: //RootNode
-    4300000: Icosphere_004
-    4300002: Icosphere_003
-    4300004: Icosphere_002
-    4300006: Icosphere_001
-    4300008: Icosphere
-    4300010: Cylinder
+    100000: Terrain
+    100002: //RootNode
+    100004: Water
+    400000: Terrain
+    400002: //RootNode
+    400004: Water
+    2100000: Material
+    2100002: unnamed
+    2300000: Terrain
+    2300002: Water
+    3300000: Terrain
+    3300002: Water
+    4300000: Water
+    4300002: Terrain
     7400000: Default Take
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Green
-    second: {fileID: 2100000, guid: 13eb834fc036c4490a9ab191aeb63524, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_001
-    second: {fileID: 2100000, guid: 71e1ae39c1fcc4c96b9b1062f424722d, type: 2}
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
