@@ -489,7 +489,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749264638011044}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.01, y: 0, z: 0.72}
+  m_LocalPosition: {x: -0.01, y: -1.8, z: 0.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4196432625916984}
@@ -721,6 +721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819267deea9af4d26be9eee3ab059df3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cheeseParticle: {fileID: 1365544304289862, guid: 35a5881ba26e64dafab6e3da71c5de9a,
+    type: 2}
   jerryMaxSpeed: 12
   JumpSound: {fileID: 8300000, guid: 311bde2d611c7744e9b87713df344dd4, type: 3}
   HitSound: {fileID: 8300000, guid: a5548be9a9e5a6d43adb6e184f7b96bb, type: 3}

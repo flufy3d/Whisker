@@ -19,16 +19,24 @@ public class TomController : MonoBehaviour {
 	public float tomSpeedScale=100f;
 	private Vector3 lookRot;
 	private Quaternion lookTo;
+	public float timeToEatRat=4f;
+	private float time;
+	private bool isEating;
+	private ParticleSystem myParticle;
+	private float timeToCatchJerry=0.2f;
+	private float timeCatch;
 	void Start () {
 		mRigidBody = GetComponent<Rigidbody> ();
 		mAudioSource = GetComponent<AudioSource> ();
 		myAnimator=transform.GetChild(0).GetComponent<Animator>();
+		myParticle=GameObject.Find("CatCatchRatParticle").GetComponent<ParticleSystem>();
 	}
 
 	void FixedUpdate () {
+		
 		verticalVelocity=Mathf.Abs(mRigidBody.velocity.z);
 		horizontalVelocity=Mathf.Abs(mRigidBody.velocity.x);
-		if (mRigidBody != null) {
+		if (mRigidBody != null && !isEating) {
 			if (Input.GetButton ("VerticalTom") && verticalVelocity<tomMaxSpeed) {
 				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalTom")*tomSpeedScale);
 			}
@@ -48,9 +56,22 @@ public class TomController : MonoBehaviour {
 			}
 			RotateCharacter();
 		}
+		IsEatingRatAction();
 	}
 
-	void OnCollisionEnter(Collision coll){
+	void IsEatingRatAction(){
+		if(isEating){
+			time+=Time.deltaTime;
+			if(time>=timeToEatRat){
+				myAnimator.SetBool("isAttack", false);
+				time=0;
+				myParticle.emissionRate=0;
+				isEating=false;
+			}
+		}
+	}
+
+	void OnCollisionStay(Collision coll){
 		// if (coll.gameObject.tag.Equals ("Floor")) {
 		// 	mFloorTouched = true;
 		// 	if (mAudioSource != null && HitSound != null && coll.relativeVelocity.y > .5f) {
@@ -61,11 +82,20 @@ public class TomController : MonoBehaviour {
 		// 		//mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
 		// 	}
 		// } 
-		if (coll.collider.CompareTag ("Jerry")) {
-			if(mAudioSource != null && CoinSound != null){
+		if (coll.collider.CompareTag ("Jerry") && !isEating) {
+			timeCatch+=Time.deltaTime;
+			if(timeCatch>=timeToCatchJerry){
+				if(mAudioSource != null && CoinSound != null){
 				mAudioSource.PlayOneShot(CoinSound);
+				myAnimator.SetBool("isAttack", true);
+				isEating=true;
+				mRigidBody.velocity=Vector3.zero;
+				myParticle.emissionRate=10;
 			}
 			Destroy(coll.gameObject);
+			timeCatch=0;
+			}
+			
 		}
 	}
 

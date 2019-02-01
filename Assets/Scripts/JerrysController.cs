@@ -6,6 +6,7 @@ using System.Collections;
 //</summary>
 public class JerrysController : MonoBehaviour {
 
+public GameObject cheeseParticle;
 private float verticalVelocity;
 private float horizontalVelocity;
 public float jerryMaxSpeed=12f;
@@ -95,6 +96,7 @@ lookRot=new Vector3( Input.GetAxis("HorizontalJerry"), 0,Input.GetAxis("Vertical
 			if(mAudioSource != null && CoinSound != null){
 				mAudioSource.PlayOneShot(CoinSound);
 			}
+			Instantiate(cheeseParticle, other.transform.position, other.transform.rotation);
 			Destroy(other.gameObject);
 		}
 	}
