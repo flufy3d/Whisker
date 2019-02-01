@@ -50,7 +50,7 @@ private Animator mAnimator;
 			if(Input.GetAxis("HorizontalJerry")==0 ){
 				mRigidBody.velocity=new Vector3(0,mRigidBody.velocity.y,mRigidBody.velocity.z);
 			}
-			if(mRigidBody.velocity.magnitude<1f){
+			if(mRigidBody.velocity.magnitude<0.1f){
 				mAnimator.SetBool("isWalk", false);
 			}else{
 				mAnimator.SetBool("isWalk", true);
