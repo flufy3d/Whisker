@@ -680,8 +680,8 @@ MonoBehaviour:
   Floor: {fileID: 165842, guid: 8d3b36f175a633f429d7bda54c76550d, type: 2}
   Wall: {fileID: 1375503691257886, guid: 1ca8c31242299439385e8894cb02ccae, type: 2}
   Pillar: {fileID: 100012, guid: c96194cc677b3422d98bcc39e318bf10, type: 3}
-  Rows: 12
-  Columns: 12
+  Rows: 17
+  Columns: 17
   CellWidth: 4
   CellHeight: 4
   AddGaps: 0
@@ -696,6 +696,13 @@ MonoBehaviour:
   - {fileID: 1929423601147796, guid: 6fa73deadde544e59b1d2a1b39c4b99e, type: 2}
   - {fileID: 1929423601147796, guid: 6fa73deadde544e59b1d2a1b39c4b99e, type: 2}
   - {fileID: 1929423601147796, guid: 6fa73deadde544e59b1d2a1b39c4b99e, type: 2}
+  - {fileID: 1929423601147796, guid: 6fa73deadde544e59b1d2a1b39c4b99e, type: 2}
+  - {fileID: 1929423601147796, guid: 6fa73deadde544e59b1d2a1b39c4b99e, type: 2}
+  - {fileID: 1929423601147796, guid: 6fa73deadde544e59b1d2a1b39c4b99e, type: 2}
+  - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
+  - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
+  - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
+  - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
   - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
   - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
   mGameStateManager: {fileID: 315342021}
@@ -779,6 +786,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7a8a2e1823a0ea24eb2bd7253739cefd, type: 2}
+    - target: {fileID: 100002, guid: 62e35e9f8c44b4b9c99e91a1888f8b04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62e35e9f8c44b4b9c99e91a1888f8b04, type: 3}
   m_IsPrefabAsset: 0
@@ -895,9 +906,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 31.415686, z: 0}
   targets: []
-  minZoom: 40
+  minZoom: 50
   maxZoom: 10
-  zoomLimiter: 40
+  zoomLimiter: 45
 --- !u!1 &1493778477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,6 +1122,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7a8a2e1823a0ea24eb2bd7253739cefd, type: 2}
+    - target: {fileID: 100002, guid: 62e35e9f8c44b4b9c99e91a1888f8b04, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62e35e9f8c44b4b9c99e91a1888f8b04, type: 3}
   m_IsPrefabAsset: 0
