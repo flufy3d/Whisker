@@ -37,11 +37,11 @@ private Animator mAnimator;
 		verticalVelocity=Mathf.Abs(mRigidBody.velocity.z);
 		horizontalVelocity=Mathf.Abs(mRigidBody.velocity.x);
 		if (mRigidBody != null) {
-			if (Input.GetButton ("VerticalJerry") && verticalVelocity<jerryMaxSpeed) {
+			if (Input.GetAxis ("VerticalJerry")!=0 && verticalVelocity<jerryMaxSpeed) {
 				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalJerry")*jerrySpeedScale);
 			
 			}
-			if (Input.GetButton ("HorizontalJerry") && horizontalVelocity<jerryMaxSpeed) {
+			if (Input.GetAxis ("HorizontalJerry")!=0 && horizontalVelocity<jerryMaxSpeed) {
 				mRigidBody.AddForce(Vector3.right * Input.GetAxis("HorizontalJerry")*jerrySpeedScale);
 			
 			}
@@ -64,7 +64,7 @@ private Animator mAnimator;
 
 void RotateCharacter(){
 	if(Input.GetAxis("HorizontalJerry")!=0 || Input.GetAxis("VerticalJerry")!=0){
-lookRot=new Vector3( Input.GetAxis("HorizontalJerry"), 0,Input.GetAxis("VerticalJerry"));
+	lookRot=new Vector3( Input.GetAxis("HorizontalJerry"), 0,Input.GetAxis("VerticalJerry"));
 	LookTo=Quaternion.LookRotation(lookRot);
 	transform.rotation = Quaternion.Slerp(transform.rotation, LookTo, 10 * Time.deltaTime);
 	}

@@ -38,10 +38,10 @@ private CameraFollowPlayersScript followScript;
 		verticalVelocity=Mathf.Abs(mRigidBody.velocity.z);
 		horizontalVelocity=Mathf.Abs(mRigidBody.velocity.x);
 		if (mRigidBody != null && !isEating) {
-			if (Input.GetButton ("VerticalTom") && verticalVelocity<tomMaxSpeed) {
+			if (Input.GetAxis ("VerticalTom")!=0 && verticalVelocity<tomMaxSpeed) {
 				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalTom")*tomSpeedScale);
 			}
-			if (Input.GetButton ("HorizontalTom") && horizontalVelocity<tomMaxSpeed) {
+			if (Input.GetAxis ("HorizontalTom")!=0 && horizontalVelocity<tomMaxSpeed) {
 				mRigidBody.AddForce(Vector3.right * Input.GetAxis("HorizontalTom")*tomSpeedScale);
 			}
 			if(Input.GetAxis("VerticalTom")==0){
