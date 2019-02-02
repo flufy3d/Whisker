@@ -6,7 +6,7 @@ public class TomController : MonoBehaviour {
 	private float verticalVelocity;
 	private float horizontalVelocity;
 	private Animator myAnimator;
-
+private CameraFollowPlayersScript followScript;
 	public float tomMaxSpeed=12f;
 	public AudioClip JumpSound = null;
 	public AudioClip HitSound = null;
@@ -26,6 +26,7 @@ public class TomController : MonoBehaviour {
 	private float timeToCatchJerry=0.2f;
 	private float timeCatch;
 	void Start () {
+		followScript=Camera.main.GetComponent<CameraFollowPlayersScript>();
 		mRigidBody = GetComponent<Rigidbody> ();
 		mAudioSource = GetComponent<AudioSource> ();
 		myAnimator=transform.GetChild(0).GetComponent<Animator>();
@@ -92,6 +93,7 @@ public class TomController : MonoBehaviour {
 				mRigidBody.velocity=Vector3.zero;
 				myParticle.emissionRate=10;
 			}
+			followScript.RemoveObjectFromList(coll.gameObject);
 			Destroy(coll.gameObject);
 			timeCatch=0;
 			}

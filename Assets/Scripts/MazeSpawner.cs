@@ -37,7 +37,7 @@ public class MazeSpawner : MonoBehaviour {
 
 
 
-    void Start () {
+    void Awake () {
         _GoalSlotCount = 0;
         List<Vector3> _GoalPosList = new List<Vector3>();
 

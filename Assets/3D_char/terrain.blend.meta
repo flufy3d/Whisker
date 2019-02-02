@@ -9,12 +9,18 @@ ModelImporter:
     100006: Cube
     100008: Cube_001
     100010: Plane
+    100012: Cube_000
+    100014: Cube_002
+    100016: Cube_003
     400000: Terrain
     400002: //RootNode
     400004: Water
     400006: Cube
     400008: Cube_001
     400010: Plane
+    400012: Cube_000
+    400014: Cube_002
+    400016: Cube_003
     2100000: Material
     2100002: unnamed
     2300000: Terrain
@@ -22,16 +28,25 @@ ModelImporter:
     2300004: Cube
     2300006: Cube_001
     2300008: Plane
+    2300010: Cube_000
+    2300012: Cube_002
+    2300014: Cube_003
     3300000: Terrain
     3300002: Water
     3300004: Cube
     3300006: Cube_001
     3300008: Plane
+    3300010: Cube_000
+    3300012: Cube_002
+    3300014: Cube_003
     4300000: Water
     4300002: Terrain
     4300004: Cube_001
     4300006: Cube
     4300008: Plane
+    4300010: Cube_000
+    4300012: Cube_002
+    4300014: Cube_003
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

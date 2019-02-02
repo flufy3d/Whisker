@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrapScript : MonoBehaviour {
 
-
+private CameraFollowPlayersScript followScript;
 private Animator myAnimator;
 private GameObject myParticle;
 private bool isShaking;
@@ -25,6 +25,7 @@ private List<GameObject> ratsInTrap=new List<GameObject>();
 	}
 
 	void SetInitialReferences(){
+		followScript=Camera.main.GetComponent<CameraFollowPlayersScript>();
 		myAnimator=GetComponent<Animator>();
 		myParticle=transform.GetChild(5).gameObject;
 	}
@@ -56,6 +57,7 @@ private List<GameObject> ratsInTrap=new List<GameObject>();
 				myAnimator.SetBool("isAttack", isAttack);
 				myParticle.SetActive(true);
 				for(int i=0; i<ratsInTrap.Count;i++){
+					followScript.RemoveObjectFromList(ratsInTrap[i].gameObject);
 					Destroy(ratsInTrap[i]);
 				}
 				canAttack=false;
