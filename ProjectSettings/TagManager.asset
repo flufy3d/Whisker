@@ -10,6 +10,7 @@ TagManager:
   - Floor
   - Tom
   - Jerry
+  - bin
   layers:
   - Default
   - TransparentFX

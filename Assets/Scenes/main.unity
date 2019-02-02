@@ -705,6 +705,8 @@ MonoBehaviour:
   - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
   - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
   - {fileID: 1753978658872702, guid: 215eb6e9bbd574abf96c0ab096dd6ede, type: 2}
+  - {fileID: 1601940042407746, guid: a72219acc0a794a70a8c8a1ecb1f7621, type: 2}
+  - {fileID: 1601940042407746, guid: a72219acc0a794a70a8c8a1ecb1f7621, type: 2}
   mGameStateManager: {fileID: 315342021}
 --- !u!115 &999177115
 MonoScript:
