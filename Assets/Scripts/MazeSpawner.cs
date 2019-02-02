@@ -119,11 +119,11 @@ public class MazeSpawner : MonoBehaviour {
                     }
                     else if (_OpenPortMagicNum == (1 + 3 + 5))
                     {
-                        _GoalDirList.Add(OpenPort.Right);
+                        _GoalDirList.Add(OpenPort.Back);
                     }
                     else
                     {
-                        _GoalDirList.Add(OpenPort.Back);
+                        _GoalDirList.Add(OpenPort.Front);
                     }
                 }
 			}
