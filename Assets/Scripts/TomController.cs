@@ -23,10 +23,14 @@ private CameraFollowPlayersScript followScript;
 	private float time;
 	private bool isEating;
 	private ParticleSystem myParticle;
+	private ParticleSystem dashParticle;
 	private float timeToCatchJerry=0.2f;
 	private float timeCatch;
+	private bool isJumping;
+	private float jumpTime;
 	void Start () {
 		followScript=Camera.main.GetComponent<CameraFollowPlayersScript>();
+		dashParticle=GameObject.Find("CatDashParticle").GetComponent<ParticleSystem>();
 		mRigidBody = GetComponent<Rigidbody> ();
 		mAudioSource = GetComponent<AudioSource> ();
 		myAnimator=transform.GetChild(0).GetComponent<Animator>();
@@ -37,7 +41,7 @@ private CameraFollowPlayersScript followScript;
 		
 		verticalVelocity=Mathf.Abs(mRigidBody.velocity.z);
 		horizontalVelocity=Mathf.Abs(mRigidBody.velocity.x);
-		if (mRigidBody != null && !isEating) {
+		if (mRigidBody != null && !isEating ) {
 			if (Input.GetAxis ("VerticalTom")!=0 && verticalVelocity<tomMaxSpeed) {
 				mRigidBody.AddForce(Vector3.forward * Input.GetAxis("VerticalTom")*tomSpeedScale);
 			}
@@ -50,6 +54,12 @@ private CameraFollowPlayersScript followScript;
 			if(Input.GetAxis("HorizontalTom")==0 ){
 				mRigidBody.velocity=new Vector3(0,mRigidBody.velocity.y,mRigidBody.velocity.z);
 			}
+			if(Input.GetButtonDown("Jump") && !isJumping){
+				mRigidBody.velocity=Vector3.zero;
+				myAnimator.SetBool("isJumping", true);
+				dashParticle.emissionRate=30;
+				isJumping=true;
+			}
 			if(mRigidBody.velocity.magnitude<0.1f){
 				myAnimator.SetBool("isWalk", false);
 			}else{
@@ -57,6 +67,7 @@ private CameraFollowPlayersScript followScript;
 			}
 			RotateCharacter();
 		}
+		Jumping();
 		IsEatingRatAction();
 	}
 
@@ -72,6 +83,20 @@ private CameraFollowPlayersScript followScript;
 		}
 	}
 
+	void Jumping(){
+		if(isJumping){
+			jumpTime+=Time.deltaTime;
+			mRigidBody.AddForce(transform.forward*250f);
+			if(jumpTime>=0.4f){
+				dashParticle.emissionRate=0;
+				myAnimator.SetBool("isJumping", false);
+				jumpTime=0;
+				mRigidBody.velocity=Vector3.zero;
+				isJumping=false;
+			}
+		}
+	}
+
 	void OnCollisionStay(Collision coll){
 		// if (coll.gameObject.tag.Equals ("Floor")) {
 		// 	mFloorTouched = true;
@@ -83,30 +108,32 @@ private CameraFollowPlayersScript followScript;
 		// 		//mAudioSource.PlayOneShot (HitSound, coll.relativeVelocity.magnitude);
 		// 	}
 		// } 
-		if (coll.collider.CompareTag ("Jerry") && !isEating) {
-			timeCatch+=Time.deltaTime;
-			if(timeCatch>=timeToCatchJerry){
-				if(mAudioSource != null && CoinSound != null){
+		if (coll.gameObject.CompareTag ("Jerry") && !isEating && isJumping) {
+			Debug.Log(mRigidBody.velocity.magnitude);
+			if(mAudioSource != null && CoinSound != null){
 				mAudioSource.PlayOneShot(CoinSound);
-				myAnimator.SetBool("isAttack", true);
-				isEating=true;
-				mRigidBody.velocity=Vector3.zero;
-				myParticle.emissionRate=10;
 			}
+			isJumping=false;
+			dashParticle.emissionRate=0;
+			myAnimator.SetBool("isAttack", true);
+			myAnimator.SetBool("isJumping", false);
+			isEating=true;
+			mRigidBody.velocity=Vector3.zero;
+			myParticle.emissionRate=10;
 			followScript.RemoveObjectFromList(coll.gameObject);
-			Destroy(coll.gameObject);
-			timeCatch=0;
-			}
-			
+			Destroy(coll.gameObject);			
 		}
 	}
 
 	void RotateCharacter(){
-	if(Input.GetAxis("HorizontalTom")!=0 || Input.GetAxis("VerticalTom")!=0){
+		//if(!isJumping){
+		if(Input.GetAxis("HorizontalTom")!=0 || Input.GetAxis("VerticalTom")!=0){
 	lookRot=new Vector3( Input.GetAxis("HorizontalTom"), 0,Input.GetAxis("VerticalTom"));
 	lookTo=Quaternion.LookRotation(lookRot);
 	transform.rotation = Quaternion.Slerp(transform.rotation, lookTo, 10 * Time.deltaTime);
-	}
+	//}	
+		}
+	
 	
 
 }
