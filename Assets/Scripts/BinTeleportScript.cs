@@ -7,8 +7,8 @@ public class BinTeleportScript : MonoBehaviour {
 private List<GameObject> allBins=new List<GameObject>();
 private ParticleSystem myParticle;
 private Animator myAnimator;
-private float time;
-private GameObject inTriggerObj;
+private List<GameObject> jerriesInBin=new List<GameObject>();
+private GameObject tomInBin;
 private int randomNumber;
 	void Start () {
 		allBins.AddRange(GameObject.FindGameObjectsWithTag("bin"));
@@ -19,34 +19,40 @@ private int randomNumber;
 	
 	// Update is called once per frame
 	void Update () {
-		
+			if(Input.GetButtonDown("Jump") && tomInBin!=null){
+				tomInBin.transform.position=allBins[Random.Range(0,allBins.Count)].transform.position;
+			}
+			if(Input.GetButtonDown("JumpJerry") && jerriesInBin.Count>0){
+				for(int i=0; i<jerriesInBin.Count; i++){
+					jerriesInBin[i].transform.position=allBins[Random.Range(0,allBins.Count)].transform.position;
+				}
+			}
 	}
 
 	void OnTriggerStay(Collider col){
-		if(col.gameObject.CompareTag("Jerry") || col.gameObject.CompareTag("Tom")){
-			time+=Time.deltaTime;
-			if(inTriggerObj==null){
-				myParticle.emissionRate=30;
-				//myAnimator.SetBool("isMoving", true);
-				randomNumber=Random.Range(0,allBins.Count);
-				inTriggerObj=col.gameObject;
-			}
-			if(time>=2.5f){
-				myParticle.emissionRate=0;
-				time=0;
-				inTriggerObj.transform.position=allBins[randomNumber].transform.position;
-				//myAnimator.SetBool("isMoving", false);
-				inTriggerObj=null;
-			}
+		if(col.gameObject.CompareTag("Jerry") && !jerriesInBin.Contains(col.gameObject)){
+			jerriesInBin.Add(col.gameObject);
+			myAnimator.SetBool("isMoving",true);
+		}
+		if(col.gameObject.CompareTag("Tom") && tomInBin==null){
+			tomInBin=col.gameObject;
+			myAnimator.SetBool("isMoving",true);
 		}
 	}
 
 	void OnTriggerExit(Collider col){
-		if(inTriggerObj==col.gameObject){
-			Debug.Log("exit bin");
+		if(tomInBin==col.gameObject){
 			myParticle.emissionRate=0;
 			//myAnimator.SetBool("isMoving", false);
-			inTriggerObj=null;
+			//inTriggerObj=null;
+			myAnimator.SetBool("isMoving",false);
+			tomInBin=null;
+		}else if(col.CompareTag("Jerry")){
+			jerriesInBin.Remove(col.gameObject);
+			if(jerriesInBin.Count==0){
+				myAnimator.SetBool("isMoving",false);
+				myParticle.emissionRate=0;
+			}
 		}
 	}
 

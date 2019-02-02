@@ -12,6 +12,7 @@ ModelImporter:
     100012: Cube_000
     100014: Cube_002
     100016: Cube_003
+    100018: Cube_004
     400000: Terrain
     400002: //RootNode
     400004: Water
@@ -21,6 +22,7 @@ ModelImporter:
     400012: Cube_000
     400014: Cube_002
     400016: Cube_003
+    400018: Cube_004
     2100000: Material
     2100002: unnamed
     2300000: Terrain
@@ -31,6 +33,7 @@ ModelImporter:
     2300010: Cube_000
     2300012: Cube_002
     2300014: Cube_003
+    2300016: Cube_004
     3300000: Terrain
     3300002: Water
     3300004: Cube
@@ -39,6 +42,7 @@ ModelImporter:
     3300010: Cube_000
     3300012: Cube_002
     3300014: Cube_003
+    3300016: Cube_004
     4300000: Water
     4300002: Terrain
     4300004: Cube_001
@@ -47,11 +51,17 @@ ModelImporter:
     4300010: Cube_000
     4300012: Cube_002
     4300014: Cube_003
+    4300016: Cube_004
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 47c87a00e35b22140b638d8939ea89bf, type: 2}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
