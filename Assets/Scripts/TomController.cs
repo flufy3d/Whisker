@@ -75,6 +75,7 @@ private CameraFollowPlayersScript followScript;
 		if(isEating){
 			time+=Time.deltaTime;
 			if(time>=timeToEatRat){
+				tomMaxSpeed+=2f;
 				myAnimator.SetBool("isAttack", false);
 				time=0;
 				myParticle.emissionRate=0;
