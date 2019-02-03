@@ -93,7 +93,7 @@ void RotateCharacter(){
 
 	void OnTriggerEnter(Collider other) {
 		if (other.gameObject.tag.Equals ("Coin")) {
-			jerryMaxSpeed+=1.5f;
+			//jerryMaxSpeed+=1.5f;
 			if(mAudioSource != null && CoinSound != null){
 				mAudioSource.PlayOneShot(CoinSound);
 			}
