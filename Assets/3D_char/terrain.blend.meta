@@ -25,6 +25,9 @@ ModelImporter:
     400018: Cube_004
     2100000: Material
     2100002: unnamed
+    2100004: Walls
+    2100006: Roof
+    2100008: FlatRoofTop
     2300000: Terrain
     2300002: Water
     2300004: Cube
@@ -58,8 +61,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: FlatRoofTop
+    second: {fileID: 2100000, guid: 7a8a2e1823a0ea24eb2bd7253739cefd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: 47c87a00e35b22140b638d8939ea89bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Roof
+    second: {fileID: 2100000, guid: c4a2b741de7584d31a7a6dea34e17700, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls
+    second: {fileID: 2100000, guid: 3870199d3134949ce9d7188fe30bf69c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
