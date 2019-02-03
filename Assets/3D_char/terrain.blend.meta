@@ -28,6 +28,8 @@ ModelImporter:
     2100004: Walls
     2100006: Roof
     2100008: FlatRoofTop
+    2100010: BrickMat
+    2100012: WallMat
     2300000: Terrain
     2300002: Water
     2300004: Cube
@@ -61,6 +63,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: BrickMat
+    second: {fileID: 2100000, guid: e80a2ff43f9374f0e9438537c98f76c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: FlatRoofTop
     second: {fileID: 2100000, guid: 7a8a2e1823a0ea24eb2bd7253739cefd, type: 2}
   - first:
@@ -73,6 +80,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Roof
     second: {fileID: 2100000, guid: c4a2b741de7584d31a7a6dea34e17700, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WallMat
+    second: {fileID: 2100000, guid: 3870199d3134949ce9d7188fe30bf69c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
