@@ -110,7 +110,6 @@ private CameraFollowPlayersScript followScript;
 		// 	}
 		// } 
 		if (coll.gameObject.CompareTag ("Jerry") && !isEating && isJumping) {
-			Debug.Log(mRigidBody.velocity.magnitude);
 			if(mAudioSource != null && CoinSound != null){
 				mAudioSource.PlayOneShot(CoinSound);
 			}

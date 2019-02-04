@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class GameStateManager : MonoBehaviour {
 
+public Sprite[] catWinImages;
+public Sprite[] ratWinImages;
+private Image winImage;
     public float OneCheeseTime = 5.0f;
 
     public float CheckInterval = 0.1f;
@@ -20,11 +23,12 @@ public GameObject winCanvas;
     private WaitForSeconds checkIntervalTime;
     private bool isInGame;
     private string winner;
+    private int pressButton;
 
 
 
     void Start () {
-    
+    winImage=winCanvas.transform.GetChild(0).GetComponent<Image>();
     }
 
 
@@ -42,22 +46,25 @@ public GameObject winCanvas;
     public void EndGame()
     {   
         if(isInGame == false){
-        Time.timeScale=0;
-        winCanvas.SetActive(true);
+        // Time.timeScale=0;
+        // winCanvas.SetActive(true);
         if(winner=="Cat"){
-            winCanvas.transform.GetChild(1).gameObject.SetActive(true);
-            winCanvas.transform.GetChild(0).gameObject.SetActive(false);
+           // winImage.sprite=catWinImages[Random.Range(0, catWinImages.Length-1)];
             if(Input.GetButtonDown("Jump")){
-                Time.timeScale=1;
-                Application.LoadLevel(Application.loadedLevel);
+                pressButton++;
+                if(pressButton>1){
+                    Time.timeScale=1;
+                    Application.LoadLevel(Application.loadedLevel);  
+                }
+                
         }
         }else{
-            
-            winCanvas.transform.GetChild(1).gameObject.SetActive(false);
-            winCanvas.transform.GetChild(0).gameObject.SetActive(true);
+           //winImage.sprite=ratWinImages[Random.Range(0, ratWinImages.Length-1)];
             if(Input.GetButtonDown("JumpJerry")){
-                Time.timeScale=1;
-                Application.LoadLevel(Application.loadedLevel);
+                if(pressButton>1){
+                    Time.timeScale=1;
+                    Application.LoadLevel(Application.loadedLevel);  
+                }
             }
         }
         
@@ -93,11 +100,17 @@ public GameObject winCanvas;
             if(JerryNum == 0)
             {
                 winner = "Cat";
+                winImage.sprite=catWinImages[Random.Range(0, catWinImages.Length-1)];
+                Time.timeScale=0;
+                winCanvas.SetActive(true);
                 isInGame=false;
             }
             if(CheeseNum == 0)
             {
                 winner = "Rats";
+                winImage.sprite=ratWinImages[Random.Range(0, ratWinImages.Length-1)];
+                Time.timeScale=0;
+                winCanvas.SetActive(true);
                 isInGame=false;
             }
             // if (JerryNum >= 1 && CheeseNum == 1)
