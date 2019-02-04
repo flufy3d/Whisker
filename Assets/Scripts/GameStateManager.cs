@@ -61,6 +61,7 @@ public GameObject winCanvas;
         }else{
            //winImage.sprite=ratWinImages[Random.Range(0, ratWinImages.Length-1)];
             if(Input.GetButtonDown("JumpJerry")){
+                pressButton++;
                 if(pressButton>1){
                     Time.timeScale=1;
                     Application.LoadLevel(Application.loadedLevel);  
