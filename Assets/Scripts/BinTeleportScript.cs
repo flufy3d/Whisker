@@ -24,7 +24,11 @@ private int randomNumber;
 			}
 			if(Input.GetButtonDown("JumpJerry") && jerriesInBin.Count>0){
 				for(int i=0; i<jerriesInBin.Count; i++){
-					jerriesInBin[i].transform.position=allBins[Random.Range(0,allBins.Count)].transform.position;
+					if(jerriesInBin[i].activeSelf){
+						jerriesInBin[i].transform.position=allBins[Random.Range(0,allBins.Count)].transform.position;
+					}else{
+						Destroy(jerriesInBin[i]);
+					}
 				}
 			}
 	}

@@ -121,7 +121,8 @@ private CameraFollowPlayersScript followScript;
 			mRigidBody.velocity=Vector3.zero;
 			myParticle.emissionRate=10;
 			followScript.RemoveObjectFromList(coll.gameObject);
-			Destroy(coll.gameObject);			
+			//Destroy(coll.gameObject);	
+			coll.gameObject.SetActive(false);		
 		}
 	}
 
