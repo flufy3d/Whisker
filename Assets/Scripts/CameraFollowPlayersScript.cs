@@ -24,6 +24,15 @@ public float zoomLimiter=20f;
 	void LateUpdate () {
 		Move();
 		Zoom();
+		if(Input.GetKey(KeyCode.Joystick1Button0)){
+        print("One");
+    } else if(Input.GetKey(KeyCode.Joystick2Button0)){
+        print("Two");
+    } else if(Input.GetKey(KeyCode.Joystick3Button0)){
+        print("Three");
+    } else if(Input.GetKey(KeyCode.Joystick4Button0)){
+        print("Four");
+    }
 	}
 
 void Zoom(){
